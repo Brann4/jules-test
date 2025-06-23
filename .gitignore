@@ -1,0 +1,15 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Angular cache and build outputs
+.angular/
+dist/
+coverage/
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS specific files
+.DS_Store
+Thumbs.db

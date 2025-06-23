@@ -5,16 +5,16 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jest" // Changed from "jasmine" to "jest"
+      "jest"
     ],
-    "esModuleInterop": true, // Recommended for Jest
-    "emitDecoratorMetadata": true // Often required for Angular + Jest
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
   },
-  "files": [ // Explicitly include setup file for Jest
+  "files": [
     "setup-jest.ts"
-    // "src/polyfills.ts" // Include if your project has polyfills needed for tests
+    // "src/polyfills.ts"
   ],
-  "include": [ // Include all spec files and type definition files
+  "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ]

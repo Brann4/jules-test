@@ -1,9 +1,5 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-// FormsModule and CommonModule are imported by Auth component itself as it's standalone.
-// No need to import them here separately for TestBed if Auth component handles its own dependencies.
 import { Auth } from './auth';
-// By is not typically needed for simple querySelector, but good to know if needed for complex queries.
-// import { By } from '@angular/platform-browser';
 
 describe('Auth Component Tests', () => {
   let component: Auth;
@@ -12,14 +8,14 @@ describe('Auth Component Tests', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Auth] // Auth is standalone and imports its own dependencies (FormsModule, CommonModule)
+      imports: [Auth]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(Auth);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement as HTMLElement;
-    fixture.detectChanges(); // Initial data binding
+    fixture.detectChanges();
   });
 
   it('should create the Auth component', () => {
@@ -47,22 +43,22 @@ describe('Auth Component Tests', () => {
     passwordInput.value = 'testPass123';
     passwordInput.dispatchEvent(new Event('input'));
 
-    tick(); // Allow time for ngModel to update component properties
-    fixture.detectChanges(); // Reflect updates in the component
+    tick();
+    fixture.detectChanges();
 
     expect(component.username).toBe('testUser123');
     expect(component.password).toBe('testPass123');
   }));
 
   it('should display a success message and set loginSuccess to true on successful login', fakeAsync(() => {
-    component.username = 'user'; // Set credentials directly or via input simulation
+    component.username = 'user';
     component.password = 'password';
 
     const loginButton = nativeElement.querySelector('button[type="submit"]') as HTMLButtonElement;
     loginButton.click();
 
-    tick(); // Allow time for login method and async operations if any
-    fixture.detectChanges(); // Update view with message
+    tick();
+    fixture.detectChanges();
 
     expect(component.authMessage).toBe('Login successful!');
     expect(component.loginSuccess).toBe(true);
@@ -93,11 +89,9 @@ describe('Auth Component Tests', () => {
   }));
 
   it('should not display any authentication message initially', () => {
-    // Before any login attempt
     expect(component.authMessage).toBe('');
     expect(component.loginSuccess).toBe(false);
     const messageDiv = nativeElement.querySelector('.mt-4.text-center');
-    // The message div is rendered with *ngIf="authMessage", so it shouldn't be in the DOM if authMessage is empty
     expect(messageDiv).toBeFalsy();
   });
 });

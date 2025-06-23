@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf
 
 @Component({
   selector: 'app-auth',
-  imports: [ FormsModule, CommonModule ], // Add FormsModule and CommonModule
+  // For Standalone Components, imports are directly in the component decorator
+  imports: [ FormsModule, CommonModule ],
   templateUrl: './auth.html',
-  styleUrls: ['./auth.css'] // Changed styleUrl to styleUrls
+  styleUrls: ['./auth.css'] // Corrected to styleUrls and made it an array
 })
 export class Auth {
   username = '';
@@ -14,12 +15,12 @@ export class Auth {
   authMessage = '';
   loginSuccess = false;
 
-  login() {
+  login(): void {
     // Simple hardcoded authentication for demonstration
     if (this.username === 'user' && this.password === 'password') {
       this.authMessage = 'Login successful!';
       this.loginSuccess = true;
-      // Here you would typically navigate to another page or update application state
+      // In a real app, you'd navigate or manage state
       console.log('Login successful for user:', this.username);
     } else {
       this.authMessage = 'Invalid username or password.';

@@ -1,15 +1,26 @@
-# Ignore Node.js dependencies
+# Node modules
 node_modules/
 
-# Ignore Angular cache and build outputs
-.angular/
+# Angular
 dist/
-coverage/
+tmp/
+.angular/
+*.log
 
-# IDE specific files
+# IDE / OS files
 .vscode/
 .idea/
-
-# OS specific files
 .DS_Store
 Thumbs.db
+
+# Test output
+coverage/
+junit.xml
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Optional: Compiled output from other tools
+/out/
